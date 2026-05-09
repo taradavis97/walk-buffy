@@ -1,0 +1,8 @@
+# TASKS FOR TARA
+
+ALWAYS USE FRESH CLAUDE FOR EACH NEW TASK
+
+- **how do you change the range of times?** e.g if buffy is closest to walker it says 30seconds, if buffy is max distance its 7 min 30. This range needs changing. Hint - this is a change to the 'logic'. 'logic' is always written in javascript which will be code inside `<script lang="ts">` (because its 'ts' its actually typescript but same thing basically).
+- **how to change the images?** Hint, you should put the images into the walk-tara folder and then tell claude the names of the images and ask it to use them. Claude is very capable at organisation and keeping files in the right folders. But it could be a good learning exercise to look at the code and imagine what claude is going to do, and then check. You should use a new claude tab for this task, don't reuse any existing one.
+- **how do you deploy this website so anyone can go to it?** ask claude 'create a github repo for this project on my personal account and make it deploy when I push'
+- **how do you make the walk log 'persist' so that all visiters share the same state?** Tip: Vercel is a company that handles deployment and 'connections' to things like databases. For most personal apps, you can use another service called 'Turso' which stores data for you. I have connected turso to vercel for you, you will need to figure out the rest by following steps 2 onwards [here](https://vercel.com/taradavis97s-projects/~/integrations/tursocloud/icfg_EptVI5eDYm0goZqaLvdpty3c/resources/storage/store_w4OXLuUSPvnWFq6g/guides).
