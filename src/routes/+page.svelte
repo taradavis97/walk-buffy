@@ -2,6 +2,7 @@
 	import WalkPlanner from '$lib/WalkPlanner.svelte';
 	import WalkLog from '$lib/WalkLog.svelte';
 	import { walks } from '$lib/walks.svelte';
+    
 
 	let duration = $state(0);
 
