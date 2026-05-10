@@ -1,19 +1,14 @@
 <script lang="ts">
-	import { walks } from './walks.svelte';
 	import WalkLogRow from './WalkLogRow.svelte';
-	import { createClient } from "@libsql/client/web";
+	import type { Walk } from '$lib/types';
 
- export const turso = createClient({
-  url: import.meta.env.TURSO_DATABASE_URL,
-  authToken: import.meta.env.TURSO_AUTH_TOKEN,
-});
-
+	let { walks }: { walks: Walk[] } = $props();
 </script>
 
 <section class="log">
 	<h2>Walks</h2>
 
-	{#if walks.entries.length === 0}
+	{#if walks.length === 0}
 		<p class="empty">No walks saved yet — take Buffy out!</p>
 	{:else}
 		<table>
@@ -24,7 +19,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				{#each walks.entries as walk (walk.id)}
+				{#each walks as walk (walk.id)}
 					<WalkLogRow {walk} />
 				{/each}
 			</tbody>

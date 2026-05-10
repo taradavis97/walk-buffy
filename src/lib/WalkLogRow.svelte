@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Walk } from './walks.svelte';
+	import type { Walk } from '$lib/types';
 	import { formatDuration, formatSavedAt } from './format';
 
 	let { walk }: { walk: Walk } = $props();

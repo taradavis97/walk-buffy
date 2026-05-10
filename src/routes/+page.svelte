@@ -1,15 +1,11 @@
 <script lang="ts">
 	import WalkPlanner from '$lib/WalkPlanner.svelte';
 	import WalkLog from '$lib/WalkLog.svelte';
-	import { walks } from '$lib/walks.svelte';
-    
+	import { enhance } from '$app/forms';
+	import type { PageProps } from './$types';
 
+	let { data }: PageProps = $props();
 	let duration = $state(0);
-
-	function save() {
-		if (duration <= 0) return;
-		walks.add(duration);
-	}
 </script>
 
 <main>
@@ -20,11 +16,12 @@
 
 	<WalkPlanner bind:duration />
 
-	<button type="button" class="save" onclick={save} disabled={duration <= 0}>
-		Save walk
-	</button>
+	<form method="POST" use:enhance>
+		<input type="hidden" name="duration" value={duration} />
+		<button type="submit" class="save" disabled={duration <= 0}>Save walk</button>
+	</form>
 
-	<WalkLog />
+	<WalkLog walks={data.walks} />
 </main>
 
 <style>
@@ -48,8 +45,13 @@
 		color: #6b7280;
 	}
 
+	form {
+		display: flex;
+		justify-content: center;
+		margin: 0;
+	}
+
 	.save {
-		align-self: center;
 		padding: 0.75rem 2rem;
 		font-size: 1rem;
 		font-weight: 600;
