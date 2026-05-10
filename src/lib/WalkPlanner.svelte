@@ -90,7 +90,7 @@
 
 	<div class="stage" bind:this={stageEl}>
 		<Lead
-			fromX={walkerX}
+			fromX={walkerX + 60}
 			fromY={walkerY - 80}
 			toX={buffyX}
 			toY={buffyY}
@@ -100,7 +100,7 @@
 
 		<Walker
 			x={walkerX - 60}
-			y={walkerY - 110}
+			y={walkerY - 140}
 			alt="Two people walking Buffy"
 			{dragging}
 		/>

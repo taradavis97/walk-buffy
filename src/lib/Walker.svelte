@@ -8,7 +8,7 @@
 		dragging?: boolean;
 	};
 
-	let { x, y, width = 80, height = 140, alt = '', dragging = false }: Props = $props();
+	let { x, y, width = 150, height = 160, alt = '', dragging = false }: Props = $props();
 </script>
 
 <img
