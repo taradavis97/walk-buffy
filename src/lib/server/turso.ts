@@ -14,7 +14,8 @@ export function ensureSchema() {
 			`CREATE TABLE IF NOT EXISTS walks (
 				id TEXT PRIMARY KEY,
 				saved_at TEXT NOT NULL,
-				duration_sec INTEGER NOT NULL
+				duration_sec INTEGER NOT NULL,
+				name TEXT NOT NULL
 			)`
 		)
 		.then(() => undefined);

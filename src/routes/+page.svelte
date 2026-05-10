@@ -3,6 +3,7 @@
 	import WalkLog from '$lib/WalkLog.svelte';
 	import { enhance } from '$app/forms';
 	import type { PageProps } from './$types';
+    import Input from '$lib/Input.svelte'
 
 	let { data }: PageProps = $props();
 	let duration = $state(0);
@@ -18,6 +19,7 @@
 
 	<form method="POST" use:enhance>
 		<input type="hidden" name="duration" value={duration} />
+        <Input /> 
 		<button type="submit" class="save" disabled={duration <= 0}>Save walk</button>
 	</form>
 
@@ -48,7 +50,9 @@
 	form {
 		display: flex;
 		justify-content: center;
+        gap: 2rem;
 		margin: 0;
+
 	}
 
 	.save {

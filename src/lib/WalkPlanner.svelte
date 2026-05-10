@@ -58,8 +58,8 @@
 		)
 	);
 
-	const dLo = $derived(distMax * 0.18);
-	const dHi = $derived(distMax * 0.78);
+	const dLo = $derived(distMax * 0.4);
+	const dHi = $derived(distMax * 0.8);
 
 	function smoothstep(x: number) {
 		const c = Math.max(0, Math.min(1, x));
@@ -76,12 +76,12 @@
 
 	const computedDuration = $derived(
 		Math.round(
-			distanceToSeconds(Math.hypot(buffyX - walkerX, buffyY - walkerY), dLo, dHi, distMax)
-		)
+			distanceToSeconds(Math.hypot(buffyX - walkerX, buffyY - walkerY), dLo, dHi, distMax) / 60
+		) * 60
 	);
 
 	$effect(() => {
-		duration = computedDuration;
+		duration = computedDuration
 	});
 </script>
 
