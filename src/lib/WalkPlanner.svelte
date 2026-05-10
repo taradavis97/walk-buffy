@@ -9,14 +9,14 @@
 
 	const ASPECT = 600 / 320;
 	const MAX_STAGE_WIDTH = 600;
-	const buffySize = 90;
+	const buffySize = 100;
 
 	let stageEl: HTMLDivElement | undefined = $state();
 	let stageWidth = $state(MAX_STAGE_WIDTH);
 	const stageHeight = $derived(stageWidth / ASPECT);
 
 	const walkerX = $derived(stageWidth * 0.183);
-	const walkerY = $derived(stageHeight * 0.688);
+	const walkerY = $derived(stageHeight * 0.988);
 
 	const bounds: Bounds = $derived({
 		minX: buffySize / 2,
@@ -27,6 +27,7 @@
 
 	let buffyX = $state(MAX_STAGE_WIDTH * 0.733);
 	let buffyY = $state((MAX_STAGE_WIDTH / ASPECT) * 0.688);
+	let dragging = $state(false);
 
 	$effect(() => {
 		if (!stageEl) return;
@@ -90,24 +91,24 @@
 	<div class="stage" bind:this={stageEl}>
 		<Lead
 			fromX={walkerX}
-			fromY={walkerY}
+			fromY={walkerY - 80}
 			toX={buffyX}
 			toY={buffyY}
 			width={stageWidth}
 			height={stageHeight}
 		/>
 
-		<Walker x={walkerX - 30} y={walkerY - 100} color="8ab17d" />
 		<Walker
 			x={walkerX - 60}
 			y={walkerY - 110}
-			color="4a7c59"
 			alt="Two people walking Buffy"
+			{dragging}
 		/>
 
 		<Buffy
 			bind:x={buffyX}
 			bind:y={buffyY}
+			bind:dragging
 			{bounds}
 			size={buffySize}
 			valueNow={duration}

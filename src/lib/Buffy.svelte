@@ -8,18 +8,18 @@
 		size?: number;
 		valueNow: number;
 		valueText: string;
+		dragging?: boolean;
 	};
 
 	let {
 		x = $bindable(),
 		y = $bindable(),
 		bounds,
-		size = 90,
+		size = 100,
 		valueNow,
-		valueText
+		valueText,
+		dragging = $bindable(false)
 	}: Props = $props();
-
-	let dragging = $state(false);
 
 	function clamp(value: number, min: number, max: number) {
 		return Math.max(min, Math.min(max, value));
@@ -86,7 +86,7 @@
 	aria-valuenow={valueNow}
 	aria-valuetext={valueText}
 >
-	<img src="https://placehold.co/90x90/d97706/ffffff.png?text=Buffy" alt="Buffy the dog" />
+	<img src={dragging ? '/buffy-happy.png' : '/buffy-sad.png'} alt="Buffy the dog" />
 </button>
 
 <style>
@@ -94,7 +94,6 @@
 		position: absolute;
 		padding: 0;
 		border: 3px solid transparent;
-		border-radius: 50%;
 		background: transparent;
 		cursor: grab;
 		touch-action: none;
@@ -110,9 +109,9 @@
 	}
 
 	.buffy img {
-		width: 100%;
-		height: 100%;
-		border-radius: 50%;
+		width: auto;
+		height: auto;
+		object-fit: cover;
 		display: block;
 		pointer-events: none;
 	}

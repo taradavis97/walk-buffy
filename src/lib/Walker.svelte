@@ -4,21 +4,30 @@
 		y: number;
 		width?: number;
 		height?: number;
-		color: string;
-		label?: string;
 		alt?: string;
+		dragging?: boolean;
 	};
 
-	let { x, y, width = 80, height = 140, color, label = 'Walker', alt = '' }: Props = $props();
-
-	const src = $derived(`https://placehold.co/${width}x${height}/${color}/ffffff.png?text=${label}`);
+	let { x, y, width = 80, height = 140, alt = '', dragging = false }: Props = $props();
 </script>
 
-<img class="walker" {src} {alt} {width} {height} style="left: {x}px; top: {y}px;" />
+<img
+	class="walker"
+	src={dragging ? '/walkers-happy.png' : '/walkers-sad.png'}
+	{alt}
+	{width}
+	{height}
+	style="left: {x}px; top: {y}px;"
+/>
 
 <style>
 	.walker {
 		position: absolute;
 		pointer-events: none;
+		object-fit: cover;
+		display: block;
+		pointer-events: none;
 	}
+
+
 </style>
