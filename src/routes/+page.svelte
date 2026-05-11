@@ -17,7 +17,11 @@
 
 	<WalkPlanner bind:duration />
 
-	<form method="POST" use:enhance>
+	<form method="POST" use:enhance={() => {
+        return async ({ update }) => {
+            await update({ reset: false });
+        };
+    }}>
 		<input type="hidden" name="duration" value={duration} />
         <Input /> 
 		<button type="submit" class="save" disabled={duration <= 0}>Save walk</button>

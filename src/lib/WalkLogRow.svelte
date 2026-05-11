@@ -1,12 +1,13 @@
 <script lang="ts">
 	import type { Walk } from '$lib/types';
-	import { formatDuration, formatSavedAt } from './format';
+	import { formatDuration, formatSavedAt, formatSavedOn } from './format';
 
 	let { walk }: { walk: Walk } = $props();
 </script>
 
 <tr>
-	<td>{formatSavedAt(walk.savedAt)}</td>
+	<td>{formatSavedOn(walk.savedAt)}</td>
+	<td class="time">{formatSavedAt(walk.savedAt)}</td>
 	<td>{walk.name}</td>
 	<td class="duration">{formatDuration(walk.durationSec)}</td>
 </tr>
@@ -19,7 +20,8 @@
 		text-transform: capitalize;
 	}
 
-	.duration {
+	.duration,
+	.time {
 		font-variant-numeric: tabular-nums;
 	}
 </style>

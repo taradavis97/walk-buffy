@@ -8,9 +8,16 @@ export function formatDuration(totalMinutes: number) {
 	return `${minutes}:${seconds}`;
 }
 
+export function formatSavedOn(iso: string) {
+	return new Date(iso).toLocaleDateString(undefined, {
+		day: 'numeric',
+		month: 'long'
+	})
+}
+
 export function formatSavedAt(iso: string) {
-	return new Date(iso).toLocaleString(undefined, {
-		dateStyle: 'medium',
-		timeStyle: 'short'
-	});
+	const d = new Date(iso);
+	const hours = d.getHours().toString().padStart(2, '0');
+	const minutes = d.getMinutes().toString().padStart(2, '0');
+	return `${hours}:${minutes}`;
 }

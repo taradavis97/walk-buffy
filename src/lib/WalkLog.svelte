@@ -14,6 +14,7 @@
 		<table>
 			<thead>
 				<tr>
+					<th scope="col">Date</th>
 					<th scope="col">Time</th>
 					<th scope="col">Walker</th>
 					<th scope="col">Duration</th>
