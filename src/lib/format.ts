@@ -21,3 +21,9 @@ export function formatSavedAt(iso: string) {
 	const minutes = d.getMinutes().toString().padStart(2, '0');
 	return `${hours}:${minutes}`;
 }
+
+export function toDatetimeLocal(iso: string) {
+	const d = new Date(iso);
+	const pad = (n: number) => n.toString().padStart(2, '0');
+	return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`;
+}

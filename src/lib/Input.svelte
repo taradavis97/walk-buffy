@@ -15,7 +15,7 @@ $effect(() => {
 
 <style>
    .input {
-    border: solid darkgrey 2px;
+    border: solid lightgray 1px;
     border-radius: 8px;
     padding-inline: 1rem;
     color: black;

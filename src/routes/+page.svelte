@@ -17,7 +17,7 @@
 
 	<WalkPlanner bind:duration />
 
-	<form method="POST" use:enhance={() => {
+	<form method="POST" action="?/create" use:enhance={() => {
         return async ({ update }) => {
             await update({ reset: false });
         };

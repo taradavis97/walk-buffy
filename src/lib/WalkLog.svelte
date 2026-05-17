@@ -6,10 +6,10 @@
 </script>
 
 <section class="log">
-	<h2>Walks</h2>
+	<h2>Walks (last 24 hours)</h2>
 
 	{#if walks.length === 0}
-		<p class="empty">No walks saved yet — take Buffy out!</p>
+		<p class="empty">No walks in the last 24 hours — take Buffy out!</p>
 	{:else}
 		<table>
 			<thead>
@@ -18,6 +18,7 @@
 					<th scope="col">Time</th>
 					<th scope="col">Walker</th>
 					<th scope="col">Duration</th>
+					<th scope="col" class="actions-head"><span class="sr-only">Actions</span></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -48,8 +49,20 @@
 	}
 
 	table {
+		table-layout: fixed;
 		width: 100%;
 		border-collapse: collapse;
+	}
+
+	tr :nth-child(1),
+	tr :nth-child(3),
+	tr :nth-child(4) {
+		width: 20%;
+		
+	}
+
+	tr :nth-child(2) {
+		width: 15%;
 	}
 
 	th {
@@ -58,5 +71,17 @@
 		border-bottom: 1px solid #e5e7eb;
 		background: #f9fafb;
 		font-weight: 600;
+	}
+
+	.sr-only {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		padding: 0;
+		margin: -1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		white-space: nowrap;
+		border: 0;
 	}
 </style>
