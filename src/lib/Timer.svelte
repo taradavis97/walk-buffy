@@ -12,6 +12,6 @@
 		font-variant-numeric: tabular-nums;
 		font-weight: 600;
 		margin: 0;
-		color: #1f2937;
+		color: var(--fg-default);
 	}
 </style>

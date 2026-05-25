@@ -5,6 +5,7 @@
 	import Button from '$lib/Button.svelte';
 	import { Trash, SquarePen } from '@lucide/svelte';
 
+
 	let { walk }: { walk: Walk } = $props();
 
 	let editing = $state(false);
@@ -69,8 +70,8 @@
 				<input type="hidden" name="duration" value={editMinutes * 60} />
 			</form>
 			
-			<button type="button" onclick={() => (editing = false)}>Cancel</button>
-			<button form={editFormId} type="submit" class="save">Save</button>
+			<Button variant="secondary" onclick={() => (editing = false)}>Cancel</Button>
+			<Button form={editFormId} type="submit" variant="primary">Save</Button>
 		</td>
 	{:else}
 		<td>{formatSavedOn(walk.savedAt)}</td>
@@ -93,7 +94,7 @@
 				onclick={(e) => {
 					if (!confirm('Delete this walk?')) e.preventDefault();
 				}}>
-				<Trash size={20} color=red/>
+				<Trash size={20}/>
 			   </Button
 			>
 		</td>
@@ -105,6 +106,7 @@
 		text-align: left;
 		padding: 0.5rem 0.75rem;
 		text-transform: capitalize;
+		color: var(--fg-light);
 		
 	}
 
@@ -112,8 +114,9 @@
 	tr {
 		
 		align-items: center;
-		border-bottom: solid 1px gray;
+		border-bottom: solid 1px var(--fg-border);
 		width: 100%;
+		color: var(--fg-light);
 	}
 
 
@@ -121,6 +124,7 @@
 	.duration,
 	.time {
 		font-variant-numeric: tabular-nums;
+		color: var(--fg-light);
 	}
 
 	.actions {
@@ -129,44 +133,23 @@
 		justify-content: flex-end;
 	}
 
-	.actions button {
-		padding: 0.5rem 1rem;
-		height: 40px;
-		font-size: 0.85rem;
-		border: 1px solid #d1d5db;
-		background: white;
-		border-radius: 0.375rem;
-		cursor: pointer;
-	}
 
-	.actions button:hover {
-		background: #f3f4f6;
-	}
-
-	.actions .save {
-		background: #2563eb;
-		color: white;
-		border-color: #2563eb;
-	}
-
-	.actions .save:hover {
-		background: #1d4ed8;
-	}
 
 	
 	input[type='text'],
 	input[type='datetime-local'],
 	input[type='number'] {
 		font: inherit;
-		border: solid lightgray 1px;
+		border: solid var(--fg-border) 1px;
         border-radius: 8px;
         padding: 0.25rem;
-        color: black;
+        color: var(--fg-light);
 	}
 
 	input[type='text'] {
 		width: 100%;
 		text-transform: capitalize;
+		color: var(--fg-light);
 	}
 
 	.minutes {
@@ -175,7 +158,7 @@
 
 	.unit {
 		margin-left: 0.125rem;
-		color: #6b7280;
+		color: var(--fg-lighter);
 		font-size: 0.85rem;
 		text-transform: none;
 	}

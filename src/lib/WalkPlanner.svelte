@@ -124,7 +124,7 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		gap: 0.75rem;
+		gap: var(--spacing-sm);
 	}
 
 	.stage {
@@ -132,15 +132,15 @@
 		width: 100%;
 		max-width: 600px;
 		aspect-ratio: 600 / 320;
-		background: linear-gradient(180deg, #e0f2fe 0%, #bbf7d0 100%);
-		border-radius: 1rem;
+		background: linear-gradient(180deg, var(--primary-tonal) 0%, var(--bg-base) 100%);
+		border-radius: var(--border-radius-xl);
 		overflow: hidden;
 		touch-action: none;
 		user-select: none;
 	}
 
 	.hint {
-		color: #6b7280;
+		color: var(--fg-light);
 		font-size: 0.9rem;
 		margin: 0;
 	}

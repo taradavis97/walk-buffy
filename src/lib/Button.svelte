@@ -2,18 +2,22 @@
 	import type { Snippet } from 'svelte';
 	import type { HTMLButtonAttributes } from 'svelte/elements';
 
-	type Variant = 'primary' | 'secondary' | 'ghost' | 'danger';
+	type Variant = 'primary' | 'secondary' | 'ghost' | 'danger' | 'neutral';
+
+	type Size = 'small' | 'default' | 'xs';
+
 
 	type Props = HTMLButtonAttributes & {
 		variant?: Variant;
 		icon?: boolean;
+		size?: Size;
 		children: Snippet;
 	};
 
-	let { variant = 'primary', icon = false, children, type = 'button', ...rest }: Props = $props();
+	let { variant = 'primary', icon = false, size = 'default', children, type = 'button', ...rest }: Props = $props();
 </script>
 
-<button {type} class="btn {variant}" class:icon {...rest}>
+<button {type} class="btn {variant} {size}" class:icon {...rest}>
 	{@render children()}
 </button>
 
@@ -22,14 +26,15 @@
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		gap: 0.5rem;
-		padding: 0.75rem 1.25rem;
+		gap: var(--spacing-sm);
+		padding: var(--spacing-sm) var(--spacing-md);
 		font-size: 1rem;
-		font-weight: 600;
+		font-weight: 400;
 		font-family: inherit;
-		line-height: 1;
+		line-height: 1.2rem;
+		height: var(--height-md);
 		border: none;
-		border-radius: 0.5rem;
+		border-radius: var(--border-radius-md);
 		cursor: pointer;
 		transition:
 			background-color 0.15s,
@@ -42,44 +47,83 @@
 		opacity: 0.6;
 	}
 
+	.small {
+		gap: var(--spacing-xs);
+		padding: var(--spacing-sm) var(--spacing-md);
+		font-size: 0.875rem;
+	}
+
+	.large {
+		gap: var(--spacing-sm);
+		padding: var(--spacing-md) var(--spacing-lg);
+		font-size: 1rem;
+	}
+
 	.primary {
-		color: white;
-		background: #2563eb;
+		color: var(--fg-inverse);
+		background: var(--bg-primary);
 	}
 	.primary:hover:not(:disabled) {
-		background: #1d4ed8;
+		background:var(--bg-primary-hover);
 	}
 
 	.secondary {
-		color: #111827;
-		background: white;
-		border: 2px solid darkgrey;
+		color: var(--fg-neutral);
+		border: 1px solid var(--fg-neutral);
 	}
 	.secondary:hover:not(:disabled) {
-		background: #f3f4f6;
+		background: var(--bg-neutral);
+		color: var(--fg-inverse);
 	}
 
 	.ghost {
-		color: #2563eb;
+		color: var(--fg-neutral);
 		background: transparent;
 	}
 	.ghost:hover:not(:disabled) {
-		background: rgba(37, 99, 235, 0.1);
+		background: var(--bg-neutral-tonal);
+		color: var(--fg-neutral-hover);
+	}
+
+	.neutral {
+		color: var(--fg-neutral);
+		background: transparent;
+	}
+
+	.neutral:hover:not(:disabled) {
+		background: var(--bg-neutral-tonal);
+		color: var(--fg-neutral-hover);
+
 	}
 
 	.danger {
-		color: red;
+		color: var(--fg-danger);
 		background: transparent;
 	}
 
 	.danger:hover:not(:disabled) {
-		background: rgba(255, 0, 0, 0.1); 
+		background: var(--bg-danger-tonal); 
+		color: var(--fg-danger-hover);
 	}
 
 	.btn.icon {
-		padding: 0.5rem;
-		width: 2.5rem;
-		height: 2.5rem;
-		border-radius: 0.5rem;
+		padding: var(--spacing-sm);
+		width: var(--width-md);
+		height: var(--height-md);
+		border-radius: var(--border-radius-md);
+	}
+
+	.btn.icon.small {
+		padding: var(--spacing-xs);
+		width: var(--width-sm);
+		height: var(--height-sm);
+		border-radius: var(--border-radius-sm);
+	}
+
+	.btn.icon.xs {
+		padding: var(--spacing-2xs);
+		width: var(--width-xs);
+		height: var(--height-xs);
+		border-radius: var(--border-radius-sm);
 	}
 </style>

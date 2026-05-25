@@ -3,7 +3,8 @@
 	import WalkLog from '$lib/WalkLog.svelte';
 	import { enhance } from '$app/forms';
 	import type { PageProps } from './$types';
-    import Input from '$lib/Input.svelte'
+    import Input from '$lib/Input.svelte';
+	import Button from '$lib/Button.svelte';
 
 	let { data }: PageProps = $props();
 	let duration = $state(0);
@@ -24,7 +25,7 @@
     }}>
 		<input type="hidden" name="duration" value={duration} />
         <Input /> 
-		<button type="submit" class="save" disabled={duration <= 0}>Save walk</button>
+		<Button type="submit" variant="primary" disabled={duration <= 0}>Save walk</Button>
 	</form>
 
 	<WalkLog walks={data.walks} />
@@ -44,11 +45,12 @@
 	header h1 {
 		margin: 0 0 0.25rem;
 		font-size: 2rem;
+		color: var(--fg-default);
 	}
 
 	header p {
 		margin: 0;
-		color: #6b7280;
+		color: var(--fg-light);
 	}
 
 	form {
@@ -59,24 +61,5 @@
 
 	}
 
-	.save {
-		padding: 0.75rem 2rem;
-		font-size: 1rem;
-		font-weight: 600;
-		color: white;
-		background: #2563eb;
-		border: none;
-		border-radius: 0.5rem;
-		cursor: pointer;
-		transition: background-color 0.15s;
-	}
 
-	.save:hover:not(:disabled) {
-		background: #1d4ed8;
-	}
-
-	.save:disabled {
-		background: #9ca3af;
-		cursor: not-allowed;
-	}
 </style>

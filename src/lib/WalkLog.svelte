@@ -40,10 +40,11 @@
 	h2 {
 		font-size: 1.25rem;
 		margin: 0;
+		color: var(--fg-default);
 	}
 
 	.empty {
-		color: #6b7280;
+		color: var(--fg-default);
 		font-style: italic;
 		margin: 0;
 	}
@@ -52,6 +53,7 @@
 		table-layout: fixed;
 		width: 100%;
 		border-collapse: collapse;
+		color: var(--fg-default);
 	}
 
 	tr :nth-child(1),
@@ -68,9 +70,10 @@
 	th {
 		text-align: left;
 		padding: 0.5rem 0.75rem;
-		border-bottom: 1px solid #e5e7eb;
-		background: #f9fafb;
-		font-weight: 600;
+		border-bottom: 1px solid var(--fg-border);
+		background: var(--bg-elevation-1);
+		font-weight: 500;
+		color: var(--fg-default);
 	}
 
 	.sr-only {
